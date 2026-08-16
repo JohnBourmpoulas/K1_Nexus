@@ -1,0 +1,2 @@
+# K1 Nexus currently uses only the Python standard library.
+# No third-party pip packages are required.
