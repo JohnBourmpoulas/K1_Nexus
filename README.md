@@ -1,304 +1,106 @@
-# K1 Nexus
+# K1 Nexus — Printer Command Center
 
-K1 Nexus is a cross-platform desktop application for monitoring and
-controlling compatible Creality K1 3D printers over a local network.
+K1 Nexus is an unofficial desktop control application for compatible Creality K1-series printers reachable over the local network.
 
-The project provides a lightweight desktop interface for common printer
-operations including status monitoring, temperature monitoring, motion
-control, filament operations, G-code file management, printer self-check
-functions, settings, diagnostics, and local network profiles.
+It provides a single desktop interface for printer status, motion and temperature controls, filament operations, G-code file management, self-check functions, settings, and diagnostics.
 
-K1 Nexus is an independent open-source project and is not affiliated
-with, endorsed by, or maintained by Creality.
+> **Important:** K1 Nexus is an independent community project and is not affiliated with, endorsed by, or supported by Creality.
 
 ## Features
 
-Current features include:
+- Live printer connection/status over LAN
+- Nozzle, bed, and chamber temperature information
+- Print progress and print controls
+- X/Y/Z motion and homing controls
+- Filament controls
+- G-code file listing, upload/download, rename/delete, and print actions supported by the printer LAN interface
+- Self-check and device settings
+- Diagnostics panel
+- Dark K1 Nexus desktop interface
+- Cross-platform Python codebase
 
--   Live printer connection status
--   Nozzle temperature monitoring
--   Heated bed temperature monitoring
--   Chamber temperature monitoring
--   Current print status
--   Print progress
--   Layer information
--   Print timing information
--   Printer position information
--   Pause, resume, and stop controls
--   Printer LED control
--   Manual X, Y, and Z movement
--   Homing controls
--   Filament operations
--   G-code file listing
--   G-code upload
--   File download
--   File deletion
--   Starting prints from the application
--   Saved network profiles
--   Printer self-check functions
--   Application and printer settings
--   Built-in diagnostics
+The experimental 3D model preview and camera-recording features are intentionally not included in this release.
 
-## Supported Platforms
-
-K1 Nexus is intended to run on macOS, Windows, and Linux.
-
-  Operating System   Launcher
-  ------------------ ------------------------
-  macOS              `Run K1 Nexus.command`
-  Windows            `Run K1 Nexus.bat`
-  Linux              `run_k1_nexus.sh`
-
-The main application is written in Python and uses Tkinter for the
-graphical interface.
-
-## Printer Compatibility
-
-K1 Nexus is currently developed primarily for the Creality K1 family.
-
-Compatibility may vary depending on the printer model, firmware version,
-network configuration, and the services exposed by the installed printer
-firmware.
-
-Not every K1 model and firmware version has been tested. Reports from
-users testing other configurations are welcome.
-
-## Requirements
-
--   Python 3
--   Tkinter
--   A compatible Creality K1 printer
--   A local network connection between the computer and printer
-
-Additional Python dependencies, if required by a particular version, are
-listed in `requirements.txt`.
-
-## Installation
-
-### Clone the repository
-
-``` bash
-git clone https://github.com/JohnBourmpoulas/K1_Nexus.git
-cd K1_Nexus
-```
-
-Alternatively, download the repository as a ZIP file from GitHub and
-extract it.
+## Supported desktop platforms
 
 ### macOS
+Requires Python 3 with Tkinter. Double-click **Run K1 Nexus.command**, or run:
 
-Run:
-
-``` text
-Run K1 Nexus.command
+```bash
+python3 k1_touch.py
 ```
 
-If macOS does not allow the launcher to execute, open Terminal in the
-project directory and run:
-
-``` bash
-chmod +x "Run K1 Nexus.command"
-```
-
-Then start the launcher again.
+On first launch, macOS may require you to allow the downloaded launcher in Privacy & Security depending on how the ZIP/repository was obtained.
 
 ### Windows
+Install Python 3 with Tkinter (included with the normal python.org Windows installer) and enable **Add Python to PATH** during installation.
 
-Make sure Python 3 is installed, then run:
+Double-click:
 
-``` text
+```text
 Run K1 Nexus.bat
 ```
 
+The launcher tries the Windows `py -3` launcher first and then `python`.
+
 ### Linux
-
-Make the launcher executable:
-
-``` bash
-chmod +x run_k1_nexus.sh
-```
+Install Python 3 and your distribution's Tkinter package. Common package names include `python3-tk`.
 
 Then run:
 
-``` bash
+```bash
+chmod +x run_k1_nexus.sh
 ./run_k1_nexus.sh
 ```
 
-## Connecting to a Printer
+or:
 
-K1 Nexus communicates with the printer over the local network.
-
-1.  Turn on the printer.
-2.  Make sure the computer and printer are connected to the same local
-    network.
-3.  Find the printer's local IP address.
-4.  Start K1 Nexus.
-5.  Enter the printer IP address in the connection field.
-6.  Select `Reconnect`.
-
-Example local IP address:
-
-``` text
-192.168.1.195
+```bash
+python3 k1_touch.py
 ```
 
-When communication is established, K1 Nexus displays the printer as
-connected.
+## Python dependencies
 
-## Application Sections
+K1 Nexus currently uses only Python standard-library modules. There are no third-party pip dependencies in this release. `requirements.txt` is included to make that explicit.
 
-### Home
+## Getting started
 
-The Home screen provides an overview of the printer, including
-temperatures, print state, progress, position, timing information, and
-print controls.
+1. Connect the computer and printer to the same local network.
+2. Start K1 Nexus using the launcher for your operating system.
+3. Enter the printer's LAN IP address in the top-right field.
+4. Select **Reconnect**.
+5. Confirm that the application reports **Connected**.
 
-### Control
+The default address shown by the application may not match your printer. Use the address assigned to your printer on your network.
 
-The Control section provides manual printer controls, including axis
-movement and homing operations.
+## Repository layout
 
-### Filament
+```text
+K1-Nexus/
+├── k1_touch.py              # Main application
+├── Run K1 Nexus.command     # macOS launcher
+├── Run K1 Nexus.bat         # Windows launcher
+├── run_k1_nexus.sh          # Linux launcher
+├── requirements.txt         # Dependency declaration
+├── README.md
+├── LICENSE
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── .gitignore
+└── .gitattributes
+```
 
-The Filament section provides filament-related printer operations.
+## Compatibility notes
 
-### Files
+The desktop application itself is written to avoid macOS-only application APIs. Printer-side functionality still depends on the LAN interfaces exposed by the printer firmware. A feature may therefore behave differently on another printer model or firmware revision even when K1 Nexus itself runs correctly on Windows, macOS, or Linux.
 
-The Files section provides access to G-code file management and
-supported print operations.
+K1 Nexus should not be treated as a replacement for printer safety systems. Keep the printer supervised when appropriate and verify motion/temperature commands before using them.
 
-Depending on the printer firmware, this can include listing files,
-uploading G-code, downloading files, deleting files, and starting a
-print.
+## Development
 
-### Networking
+A quick syntax check can be run with:
 
-The Networking section maintains network profiles used by K1 Nexus.
+```bash
+python3 -m py_compile k1_touch.py
+```
 
-A saved profile can contain:
-
--   SSID
--   Password
--   Priority
-
-Network profiles stored in K1 Nexus should not be confused with Wi-Fi
-networks stored by the printer firmware.
-
-Saving a network profile in the application does not guarantee that the
-Wi-Fi credentials are written to the printer. Printer-side Wi-Fi
-configuration depends on interfaces made available by the installed
-firmware.
-
-### Self Check
-
-The Self Check section provides access to supported printer self-test
-functions.
-
-### Settings
-
-The Settings section contains available application and printer-related
-configuration.
-
-### Diagnostics
-
-The Diagnostics section provides information that can help identify
-communication and printer-interface problems.
-
-## Networking Limitations
-
-K1 Nexus communicates with the printer using interfaces available over
-the local network.
-
-Some Creality firmware versions do not expose an interface that allows
-K1 Nexus to modify the printer's saved Wi-Fi credentials.
-
-For this reason, network profiles created in K1 Nexus may currently be
-stored only by the application.
-
-Printer-side Wi-Fi management remains an area for future development.
-
-## Current Limitations
-
-K1 Nexus depends on services exposed by the printer firmware.
-Functionality can therefore vary between firmware versions and printer
-configurations.
-
-Current limitations include:
-
--   Compatibility with every Creality K1 model and firmware version has
-    not been verified.
--   Printer-side Wi-Fi configuration is not guaranteed on stock
-    firmware.
--   Some printer functions may not be exposed by certain firmware
-    versions.
--   K1 Nexus does not automatically obtain root access or bypass printer
-    security.
--   The application currently requires Python rather than being
-    distributed as a fully self-contained native installer.
-
-## Project Status
-
-K1 Nexus is under active development.
-
-The current goal is to provide a practical, lightweight desktop control
-application for Creality K1 printers while maintaining support for
-macOS, Windows, and Linux.
-
-Areas planned for future development include:
-
--   Improved automatic printer discovery
--   Broader K1-family compatibility
--   Improved network management
--   Additional printer telemetry
--   Enhanced file management
--   Improved diagnostics
--   User interface improvements
--   Easier installation and setup
--   Standalone application packages for macOS, Windows, and Linux
-
-## Contributing
-
-Bug reports, testing, suggestions, and code contributions are welcome.
-
-When reporting a problem, include as much of the following information
-as possible:
-
--   Operating system
--   Python version
--   Printer model
--   Printer firmware version
--   Relevant error message
--   Relevant diagnostic output
--   Steps required to reproduce the problem
-
-Do not include passwords, authentication credentials, or other sensitive
-information in issues or diagnostic reports.
-
-See `CONTRIBUTING.md` for additional contribution information.
-
-## Security
-
-K1 Nexus communicates with devices on the local network.
-
-Do not publish Wi-Fi passwords, SSH or root passwords, authentication
-credentials, or other sensitive network information in GitHub issues,
-screenshots, logs, or diagnostic reports.
-
-Security-related information is available in `SECURITY.md`.
-
-## License
-
-K1 Nexus is released under the MIT License.
-
-See the `LICENSE` file for the full license text.
-
-## Disclaimer
-
-K1 Nexus is an independent open-source project.
-
-Creality and related product names are trademarks of their respective
-owners. This project is not affiliated with, sponsored by, endorsed by,
-or officially supported by Creality.
-
-3D printers contain moving parts and components that operate at high
-temperatures. Remote-control functionality should be used responsibly.
