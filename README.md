@@ -1,4 +1,4 @@
-# K1 Nexus — Printer Command Center
+# K1 Nexus - Printer Command Center
 
 K1 Nexus is an unofficial cross-platform desktop application for controlling and monitoring compatible Creality K1-series 3D printers over a local network.
 
