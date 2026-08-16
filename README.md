@@ -8,9 +8,9 @@ K1 Nexus is an independent community project and is not affiliated with, endorse
 
 ## Overview
 
-The main screen provides live information about the connected printer, including nozzle, bed and chamber temperatures, print status, progress, timing information and basic print controls.
+The main screen provides real-time information about the connected printer, including nozzle, bed, and chamber temperatures, print status, progress, timing information, and basic print controls.
 
-![K1 Nexus Home](assets/home.png)
+![K1 Nexus Home](assets/screenshots/home.png)
 
 ## Features
 
@@ -35,62 +35,59 @@ The main screen provides live information about the connected printer, including
 - Run available self-check and calibration functions
 - Access printer settings and device information
 - Built-in diagnostics
-- Send G-code commands from the diagnostics interface
 - Dark desktop interface
 
 Camera recording and the experimental 3D model preview are not included in this release.
 
 ## Printer Control
 
-The Control section provides direct access to printer movement and operating controls.
+The Control section provides direct access to movement, temperature, fan, speed, and flow controls.
 
-It includes X, Y and Z movement, axis homing, nozzle and bed temperature controls, fan control, print speed and flow settings.
+X, Y, and Z axes can be moved using selectable step sizes, while homing controls are available for individual groups of axes. Nozzle and bed target temperatures can also be set directly from the application.
 
-![K1 Nexus Control](assets/control.png)
+![K1 Nexus Control](assets/screenshots/control.png)
 
 ## Filament Control
 
-The Filament section provides access to the printer's filament loading and unloading functions.
+The Filament section provides controls for loading and unloading filament.
 
-Manual extrusion and retraction are also available, allowing the user to specify the amount of filament to move.
+It also includes manual extrusion and retraction controls, allowing a specific filament movement distance to be entered when required.
 
-![K1 Nexus Filament](assets/filament.png)
+![K1 Nexus Filament](assets/screenshots/filament.png)
 
 ## G-code File Management
 
-The Files section provides access to G-code files available on the printer.
+K1 Nexus can access G-code files exposed by the printer and display available file information.
 
-Files can be viewed and managed directly from K1 Nexus. Supported operations include uploading, downloading, renaming, deleting and starting print jobs.
+Supported file operations include uploading, downloading, renaming, deleting, and starting print jobs directly from the desktop application.
 
-File information provided by the printer, such as material, nozzle temperature, bed temperature and estimated print time, can also be displayed when available.
-
-![K1 Nexus Files](assets/files.png)
+![K1 Nexus Files](assets/screenshots/files.png)
 
 ## Self Check and Calibration
 
 The Self Check section provides access to available printer calibration and maintenance functions.
 
-Depending on printer and firmware support, these functions include automatic bed leveling, input shaping, bed PID calibration, homing and bed mesh information.
+Depending on the printer and firmware, this can include functions such as Auto Bed Leveling, Input Shaping, Bed PID calibration, bed mesh requests, and printer homing.
 
-![K1 Nexus Self Check](assets/self%20check.png)
+![K1 Nexus Self Check](assets/screenshots/self%20check.png)
 
 ## Printer Settings
 
-The Settings section provides access to printer features and system functions exposed by the printer.
+The Settings section provides access to printer features, system functions, and device information exposed by the printer.
 
-Available controls can include filament detection, timelapse settings, nozzle move snapshot, system restart functions, error clearing and access to the stock LAN interface.
+Available options may depend on the connected printer model and firmware version.
 
-Device information reported by the printer can also be viewed from this section.
-
-![K1 Nexus Settings](assets/settings.png)
+![K1 Nexus Settings](assets/screenshots/settings.png)
 
 ## Diagnostics
 
 The Diagnostics section displays communication between K1 Nexus and the connected printer.
 
-It can be used to inspect data received from the printer and commands transmitted by the application. G-code commands can also be sent directly from this interface for testing and troubleshooting.
+It can be used to inspect received printer information, connection activity, responses, and other data useful for testing and troubleshooting.
 
-![K1 Nexus Diagnostics](assets/diagnostics.png)
+The interface also provides a field for manually sending G-code commands when required.
+
+![K1 Nexus Diagnostics](assets/screenshots/diagnostics.png)
 
 ## Supported Platforms
 
@@ -193,13 +190,14 @@ K1_Nexus/
 ├── README.md
 ├── LICENSE
 ├── assets/
-│   ├── home.png
-│   ├── control.png
-│   ├── filament.png
-│   ├── files.png
-│   ├── self check.png
-│   ├── settings.png
-│   └── diagnostics.png
+│   └── screenshots/
+│       ├── control.png
+│       ├── diagnostics.png
+│       ├── filament.png
+│       ├── files.png
+│       ├── home.png
+│       ├── self check.png
+│       └── settings.png
 └── K1_Nexus/
     ├── k1_touch.py
     ├── Run K1 Nexus.command
@@ -245,11 +243,9 @@ The printer must already be connected to a network that is reachable from the co
 
 ## Safety
 
-K1 Nexus can send motion, temperature, filament, calibration, system and print-control commands to a connected 3D printer.
+K1 Nexus can send motion, temperature, filament, calibration, system, and print-control commands to a connected 3D printer.
 
 Verify commands before using them and follow the normal safety procedures recommended for your printer.
-
-Some operations, including movement, heating, filament operations, calibration and system restart functions, can directly affect the printer.
 
 K1 Nexus should not be considered a replacement for the printer's built-in safety systems.
 
@@ -257,14 +253,24 @@ K1 Nexus should not be considered a replacement for the printer's built-in safet
 
 K1 Nexus is an independent project under active development.
 
-The current release focuses on local printer control, monitoring, file management, filament operations, self-check functions, settings and diagnostics through a cross-platform desktop interface.
+The current release focuses on local printer control, monitoring, file management, filament operations, self-check functions, settings, and diagnostics through a cross-platform desktop interface.
 
-Functionality may vary depending on the printer model and firmware version.
+Testing has primarily been performed with the hardware and firmware available during development. Feedback from users with other compatible K1-series printers and firmware versions is welcome.
 
-Testing, feedback and contributions from users with different Creality K1-series printers are welcome.
+## Contributing
+
+Bug reports, compatibility information, suggestions, and contributions are welcome.
+
+When reporting an issue, include the printer model and firmware version when possible. Diagnostic information can also help identify differences between printer firmware versions.
 
 ## License
 
 K1 Nexus is released under the MIT License.
 
 See the `LICENSE` file for the full license text.
+
+## Disclaimer
+
+K1 Nexus is an independent, unofficial project.
+
+Creality and Creality K1 are trademarks of their respective owners. This project is not affiliated with, endorsed by, or supported by Creality.
